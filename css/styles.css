@@ -1,0 +1,29 @@
+
+body 
+{
+	margin: 0;
+	padding: 0;
+	background: #f1f1f1;
+}
+
+.box
+{
+	width: 750px;
+	padding: 20px;
+	background: #fff;
+	border: 1px solid #ccc;
+	border-radius: 5px;
+	margin: 100px auto 0;
+}
+
+.box h3 
+{
+	text-align: center;
+	margin-bottom: 30px;
+}
+
+table > tbody > tr > td
+{
+	font-size: 14px;
+	vertical-align: middle !important;
+}
