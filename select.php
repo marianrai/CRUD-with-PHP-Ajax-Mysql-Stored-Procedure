@@ -19,11 +19,11 @@ if ( isset($_POST['action']) && isset($_POST['token']) && ($_POST['token'] === $
 
 	// drop procedure if exists
 	$stmt = $db->runSqlQuery("DROP PROCEDURE IF EXISTS selectUser");
-	if ($stmt) {
+	if ($stmt->response) {
 		
 		// create procedure
 		$stmt = $db->runSqlQuery($procedure);		
-		if ($stmt) {
+		if ($stmt->response) {
 
 			// call the procedure
 			$stmt = $db->runSqlQuery("CALL selectUser()");

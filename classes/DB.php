@@ -4,7 +4,7 @@ class DB
 {
 	private $pdo;
 	private $stmt;
-	private $results = null;
+	public $response = null;
 	
 	public function __construct()
 	{
@@ -12,10 +12,29 @@ class DB
 	}
 
 
-	public function runSqlQuery($sql)
+	public function runSqlQuery($sql, $bind = null)
 	{
-		$this->stmt = $this->pdo->prepare($sql);
-		$this->stmt->execute();
+		try {
+
+			$this->stmt = $this->pdo->prepare($sql);
+
+			if (is_array($bind) && count($bind) > 0) {
+				
+				$this->response = $this->stmt->execute($bind);
+				
+			}
+			else {
+
+				$this->response = $this->stmt->execute();
+				
+			}
+			
+
+		} 
+		catch(PDOException $e) {
+			echo $e->getMessage();
+			die();
+		}
 
 		return $this;
 	}
